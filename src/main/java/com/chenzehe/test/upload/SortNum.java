@@ -24,14 +24,14 @@ public class SortNum {
     public static void printCountNum(int[] sortNum, Integer num) {
         //1算出数组中每个元素在本数据中的出现次数放到map中保存起来 2输出出现num次数的数组
         Map<Integer, Integer> countNumMap = new ConcurrentHashMap<Integer, Integer>();
-        Arrays.stream(sortNum).peek(x -> {
+        Arrays.stream(sortNum).forEach(x -> {
             Integer countNum = countNumMap.get(x);
             if (countNum == null) {
                 countNumMap.put(x, 1);
             } else {
                 countNumMap.put(x, countNum + 1);
             }
-        }).count();
+        });
         countNumMap.forEach( (k,v) -> {
             if(num.equals(v)){
                 System.out.println(k);
